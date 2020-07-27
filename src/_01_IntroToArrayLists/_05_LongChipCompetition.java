@@ -16,7 +16,21 @@ public class _05_LongChipCompetition {
 
 	public static void main(String[] args) {
 		_05_LongChipCompetition lcc = new _05_LongChipCompetition();
+		lcc.initializeBeatles();
 		
+		double currentLongestChipLength = 0;
+		Beatle ownerOfLongestChip = new Beatle("Placeholder");
+		
+		for(Beatle beatle : lcc.getTheBand()) {
+			for(Chip chip : beatle.getChips()) {
+				if(chip.getLength() > currentLongestChipLength) {
+					currentLongestChipLength = chip.getLength();
+					ownerOfLongestChip = beatle;
+				}
+			}
+		}
+		
+		System.out.println("The owner of the longest chip is " + ownerOfLongestChip.getName() + " with a chip that measures " + currentLongestChipLength + " units long!");
 	}
 	
 	private void initializeBeatles() {
